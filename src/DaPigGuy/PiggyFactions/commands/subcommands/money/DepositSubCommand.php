@@ -8,6 +8,8 @@ use CortexPE\Commando\args\FloatArgument;
 use DaPigGuy\PiggyFactions\commands\subcommands\FactionSubCommand;
 use DaPigGuy\PiggyFactions\factions\Faction;
 use DaPigGuy\PiggyFactions\players\FactionsPlayer;
+use minicore\api\EconomyAPI;
+use minicore\CustomPlayer;
 use pocketmine\player\Player;
 
 class DepositSubCommand extends FactionSubCommand
@@ -18,19 +20,25 @@ class DepositSubCommand extends FactionSubCommand
             $member->sendMessage("economy.negative-money");
             return;
         }
-        $this->plugin->getEconomyProvider()->getMoney($sender, function (float|int $balance) use ($args, $member, $sender, $faction) {
-            if ($balance < $args["money"]) {
-                $member->sendMessage("economy.not-enough-money", ["{DIFFERENCE}" => $args["money"] - $balance]);
-                return;
-            }
-            $this->plugin->getEconomyProvider()->takeMoney($sender, $args["money"], function (bool $success) use ($member, $args, $faction) {
-                if (!$success) {
-                    $member->sendMessage("generic-error");
+        /** @var CustomPlayer $sender */
+        $sender->getMoney(function(float $money, int $state) use ($args, $member, $sender, $faction) {
+            if($state === EconomyAPI::SUCCESS) {
+                if ($money < $args["money"]) {
+                    $member->sendMessage("economy.not-enough-money", ["{DIFFERENCE}" => $args["money"] - $money]);
                     return;
                 }
-                $faction->addMoney($args["money"]);
-                $member->sendMessage("commands.deposit.success", ["{MONEY}" => $args["money"]]);
-            });
+                $sender->takeMoney($args["money"], function (int $state) use ($member, $args, $faction) {
+                    if ($state !== EconomyAPI::SUCCESS) {
+                        $member->sendMessage("generic-error");
+                        return;
+                    }
+                    $faction->addMoney($args["money"]);
+                    $member->sendMessage("commands.deposit.success", ["{MONEY}" => $args["money"]]);
+                });
+            }
+        });
+        $this->plugin->getEconomyProvider()->getMoney($sender, function (float|int $balance) use ($args, $member, $sender, $faction) {
+
 
         });
     }

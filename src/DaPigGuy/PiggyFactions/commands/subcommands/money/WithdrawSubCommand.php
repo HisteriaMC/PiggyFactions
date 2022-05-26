@@ -8,6 +8,8 @@ use CortexPE\Commando\args\FloatArgument;
 use DaPigGuy\PiggyFactions\commands\subcommands\FactionSubCommand;
 use DaPigGuy\PiggyFactions\factions\Faction;
 use DaPigGuy\PiggyFactions\players\FactionsPlayer;
+use minicore\api\EconomyAPI;
+use minicore\CustomPlayer;
 use pocketmine\player\Player;
 
 class WithdrawSubCommand extends FactionSubCommand
@@ -23,8 +25,9 @@ class WithdrawSubCommand extends FactionSubCommand
             $member->sendMessage("economy.not-enough-money", ["{DIFFERENCE}" => $args["money"] - $balance]);
             return;
         }
-        $this->plugin->getEconomyProvider()->giveMoney($sender, $args["money"], function(bool $success) use ($member, $args, $faction): void {
-            if (!$success) {
+        /** @var CustomPlayer $sender */
+        $sender->addMoney($args["money"], function(int $status) use ($member, $args, $faction): void {
+            if ($status !== EconomyAPI::SUCCESS) {
                 $member->sendMessage("generic-error");
                 return;
             }
