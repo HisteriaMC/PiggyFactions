@@ -10,7 +10,7 @@ use DaPigGuy\PiggyFactions\language\LanguageManager;
 use DaPigGuy\PiggyFactions\players\FactionsPlayer;
 use pocketmine\player\Player;
 
-class LanguageSubCommand extends FactionSubCommand
+class LanguageSubCommand extends FactionSubCommand //unregistered for histeria
 {
     public function onNormalRun(Player $sender, ?Faction $faction, FactionsPlayer $member, string $aliasUsed, array $args): void
     {

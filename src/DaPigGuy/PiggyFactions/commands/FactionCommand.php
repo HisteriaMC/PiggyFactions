@@ -102,14 +102,14 @@ class FactionCommand extends BaseCommand
         $this->registerSubCommand(new DisbandSubCommand($this->plugin, "disband", "Disband your faction"));
         $this->registerSubCommand(new EnemySubCommand($this->plugin, "enemy", "Mark faction as an enemy"));
         $this->registerSubCommand(new FlagSubCommand($this->plugin, "flag", "Manage faction flags"));
-        $this->registerSubCommand(new FlySubCommand($this->plugin, "fly", "Fly within faction territories"));
+        //$this->registerSubCommand(new FlySubCommand($this->plugin, "fly", "Fly within faction territories"));
         $this->registerSubCommand(new HelpSubCommand($this->plugin, $this, "help", "Display command information"));
         $this->registerSubCommand(new HomeSubCommand($this->plugin, "home", "Teleport to faction home"));
         $this->registerSubCommand(new InfoSubCommand($this->plugin, "info", "Display faction info", ["who"]));
         $this->registerSubCommand(new InviteSubCommand($this->plugin, "invite", "Invite a player to your faction"));
         $this->registerSubCommand(new JoinSubCommand($this->plugin, "join", "Join a faction"));
         $this->registerSubCommand(new KickSubCommand($this->plugin, "kick", "Kick a member from your faction"));
-        $this->registerSubCommand(new LanguageSubCommand($this->plugin, "language", "Change personal language for PiggyFactions", ["lang"]));
+        //$this->registerSubCommand(new LanguageSubCommand($this->plugin, "language", "Change personal language for PiggyFactions", ["lang"]));
         $this->registerSubCommand(new LeaderSubCommand($this->plugin, "leader", "Transfer leadership of your faction"));
         $this->registerSubCommand(new LeaveSubCommand($this->plugin, "leave", "Leave your faction"));
         $this->registerSubCommand(new LogsSubCommand($this->plugin, "logs", "View your Factions logs", ["log"]));

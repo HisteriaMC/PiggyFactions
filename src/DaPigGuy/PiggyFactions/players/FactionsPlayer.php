@@ -9,6 +9,7 @@ use DaPigGuy\PiggyFactions\factions\FactionsManager;
 use DaPigGuy\PiggyFactions\language\LanguageManager;
 use DaPigGuy\PiggyFactions\PiggyFactions;
 use DaPigGuy\PiggyFactions\utils\ChatTypes;
+use minicore\CustomPlayer;
 use pocketmine\player\Player;
 use pocketmine\Server;
 use Ramsey\Uuid\UuidInterface;
@@ -97,6 +98,13 @@ class FactionsPlayer
 
     public function getLanguage(): string
     {
+        //convert Minicore language to Piggyfac understandable language
+        $player = Server::getInstance()->getPlayerByUUID($this->getUuid());
+        if ($player instanceof CustomPlayer) {
+            //get back player locale format by the chosen language in minicore
+            $converter = array_flip(\minicore\lang\LanguageManager::CLIENT_LANG_TO_CORE); //by flipping the array we're getting locales in value
+            return LanguageManager::LOCALE_CODE_TABLE[$converter[$player->getLang()->getName()]]; //now from the locale format we get the piggy fac format
+        }
         return $this->language;
     }
 

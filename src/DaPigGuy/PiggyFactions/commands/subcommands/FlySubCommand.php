@@ -10,7 +10,7 @@ use DaPigGuy\PiggyFactions\players\FactionsPlayer;
 use DaPigGuy\PiggyFactions\tasks\CheckFlightTask;
 use pocketmine\player\Player;
 
-class FlySubCommand extends FactionSubCommand
+class FlySubCommand extends FactionSubCommand //unregistered for histeria
 {
     protected bool $factionPermission = false;
 

@@ -34,6 +34,7 @@ class VersionSubCommand extends FactionSubCommand
             TextFormat::GOLD . "Translations provided by " . implode(", ", array_map(function (string $translator, array $languages): string {
                 return TextFormat::YELLOW . $translator . " (" . implode(", ", $languages) . ")" . TextFormat::GOLD;
             }, array_keys($translators), $translators)) . TextFormat::EOL .
+            TextFormat::GRAY . "This is a forked version of PiggyFactions especially modified for the Histeria server, public repo available here: https://github.com/HisteriaMC/PiggyFactions". TextFormat::EOL .
             TextFormat::GRAY . "Copyright 2020 DaPigGuy; Licensed under the Apache License.");
     }
 }
