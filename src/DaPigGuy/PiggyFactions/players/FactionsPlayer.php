@@ -103,7 +103,7 @@ class FactionsPlayer
         if ($player instanceof CustomPlayer) {
             //get back player locale format by the chosen language in minicore
             $converter = array_flip(\minicore\lang\LanguageManager::CLIENT_LANG_TO_CORE); //by flipping the array we're getting locales in value
-            return LanguageManager::LOCALE_CODE_TABLE[$converter[$player->getLang()->getName()]]; //now from the locale format we get the piggy fac format
+            return LanguageManager::LOCALE_CODE_TABLE[$converter[$player->getLang()->getLang()]]; //now from the locale format we get the piggy fac format
         }
         return $this->language;
     }

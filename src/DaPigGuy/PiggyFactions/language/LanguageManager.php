@@ -28,10 +28,12 @@ class LanguageManager
     const LOCALE_CODE_TABLE = [
         "en_US" => "english",
         "en_GB" => "english",
+        "en_UK" => "english",
         "es_ES" => "spanish",
         "es_MX" => "spanish",
         "de_DE" => "german",
         "fr_FR" => "french",
+        "fr_CA" => "french",
         "id_ID" => "indonesian",
         "sr_SP" => "serbian",
         "zh_CN" => "chinese_simplified",

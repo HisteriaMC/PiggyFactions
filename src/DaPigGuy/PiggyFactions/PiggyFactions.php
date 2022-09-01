@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace DaPigGuy\PiggyFactions;
 
-use CortexPE\Commando\BaseCommand;
-use CortexPE\Commando\PacketHooker;
+use minicore\libs\Commando\BaseCommand;
+use minicore\libs\Commando\PacketHooker;
 use DaPigGuy\libPiggyEconomy\libPiggyEconomy;
 use DaPigGuy\libPiggyEconomy\providers\EconomyProvider;
 use DaPigGuy\libPiggyUpdateChecker\libPiggyUpdateChecker;
@@ -25,14 +25,13 @@ use DaPigGuy\PiggyFactions\players\PlayerManager;
 use DaPigGuy\PiggyFactions\tasks\ShowChunksTask;
 use DaPigGuy\PiggyFactions\tasks\UpdatePowerTask;
 use DaPigGuy\PiggyFactions\utils\PoggitBuildInfo;
-use Exception;
-use jojoe77777\FormAPI\Form;
+use minicore\libs\FormAPI\Form;
 use pocketmine\entity\Entity;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
-use poggit\libasynql\DataConnector;
-use poggit\libasynql\libasynql;
+use minicore\libs\libasynql\DataConnector;
+use minicore\libs\libasynql\libasynql;
 
 class PiggyFactions extends PluginBase
 {
@@ -66,7 +65,7 @@ class PiggyFactions extends PluginBase
                 "Commando" => BaseCommand::class,
                 "libformapi" => Form::class,
                 "libasynql" => libasynql::class,
-                "libPiggyUpdateChecker" => libPiggyUpdateChecker::class
+                //"libPiggyUpdateChecker" => libPiggyUpdateChecker::class
             ] as $virion => $class
         ) {
             if (!class_exists($class)) {
@@ -79,16 +78,16 @@ class PiggyFactions extends PluginBase
         self::$instance = $this;
         $this->poggitBuildInfo = new PoggitBuildInfo($this, $this->getFile(), str_starts_with($this->getFile(), "phar://"));
 
-        libPiggyUpdateChecker::init($this);
+        //libPiggyUpdateChecker::init($this);
 
         $this->saveDefaultConfig();
         $this->initDatabase();
-        libPiggyEconomy::init();
+        /*libPiggyEconomy::init();
         try {
             if ($this->getConfig()->getNested("economy.enabled", false)) $this->economyProvider = libPiggyEconomy::getProvider($this->getConfig()->get("economy"));
         } catch (Exception $exception) {
             $this->getLogger()->error($exception->getMessage());
-        }
+        }*/
 
         PermissionFactory::init();
         FlagFactory::init();
@@ -126,9 +125,9 @@ class PiggyFactions extends PluginBase
     private function initDatabase(): void
     {
         $this->database = libasynql::create($this, $this->getConfig()->get("database"), [
-            "sqlite" => "sqlite.sql",
-            "mysql" => "mysql.sql"
-        ]);
+            "sqlite" => $this->getFile()."resources/sqlite.sql",
+            "mysql" => $this->getFile()."resources/mysql.sql" //yes its hardcoded bcs we're using the modified lib of Histeria
+        ], null, $this->getDataFolder());
 
         $this->database->executeGeneric("piggyfactions.factions.init");
         $this->database->executeGeneric("piggyfactions.players.init");

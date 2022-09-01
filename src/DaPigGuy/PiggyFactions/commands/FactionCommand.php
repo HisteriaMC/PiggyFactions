@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace DaPigGuy\PiggyFactions\commands;
 
-use CortexPE\Commando\BaseCommand;
-use CortexPE\Commando\BaseSubCommand;
+use minicore\libs\Commando\BaseCommand;
+use minicore\libs\Commando\BaseSubCommand;
 use DaPigGuy\PiggyFactions\commands\subcommands\admin\AddPowerSubCommand;
 use DaPigGuy\PiggyFactions\commands\subcommands\admin\AdminSubCommand;
 use DaPigGuy\PiggyFactions\commands\subcommands\admin\powerboost\PowerBoostSubCommand;
@@ -53,7 +53,7 @@ use DaPigGuy\PiggyFactions\commands\subcommands\TopSubCommand;
 use DaPigGuy\PiggyFactions\commands\subcommands\VersionSubCommand;
 use DaPigGuy\PiggyFactions\PiggyFactions;
 use DaPigGuy\PiggyFactions\utils\ChatTypes;
-use jojoe77777\FormAPI\SimpleForm;
+use minicore\libs\FormAPI\SimpleForm;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 
