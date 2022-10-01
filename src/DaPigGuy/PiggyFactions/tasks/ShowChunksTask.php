@@ -12,6 +12,8 @@ use pocketmine\world\particle\RedstoneParticle;
 
 class ShowChunksTask extends Task
 {
+    public array $time = [];
+
     public function __construct(private PiggyFactions $plugin)
     {
     }
@@ -20,6 +22,15 @@ class ShowChunksTask extends Task
     {
         foreach ($this->plugin->getServer()->getOnlinePlayers() as $p) {
             if (($member = $this->plugin->getPlayerManager()->getPlayer($p)) !== null && $member->canSeeChunks()) {
+                if(!isset($this->time[$p->getName()])) $this->time[$p->getName()] = 0;
+                $this->time[$p->getName()]++;
+                if($this->time[$p->getName()] === 40){
+                    $p->sendMessage($p->getLang()->ts("faction.showChunksTasks"));
+                    $member->setCanSeeChunks(false);
+                    unset($this->time[$p->getName()]);
+                    break;
+                }
+
                 $chunkX = $p->getPosition()->getFloorX() >> Chunk::COORD_BIT_SIZE;
                 $chunkZ = $p->getPosition()->getFloorZ() >> Chunk::COORD_BIT_SIZE;
 
@@ -35,6 +46,8 @@ class ShowChunksTask extends Task
                         }
                     }
                 }
+            } else if (isset($member) && !$member->canSeeChunks() && isset($this->time[$p->getName()])){
+                unset($this->time[$p->getName()]);
             }
         }
     }

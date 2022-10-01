@@ -110,7 +110,7 @@ class PiggyFactions extends PluginBase
         $this->getServer()->getPluginManager()->registerEvents(new EventListener($this), $this);
         $this->getServer()->getPluginManager()->registerEvents(new LogsListener(), $this);
 
-        $this->getScheduler()->scheduleRepeatingTask(new ShowChunksTask($this), 10);
+        $this->getScheduler()->scheduleRepeatingTask(new ShowChunksTask($this), 25);
         $this->getScheduler()->scheduleRepeatingTask(new UpdatePowerTask($this), UpdatePowerTask::INTERVAL);
     }
 
