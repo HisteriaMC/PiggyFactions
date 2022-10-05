@@ -30,6 +30,11 @@ class AllySubCommand extends FactionSubCommand
             $member->sendMessage("already-allied");
             return;
         }
+        if (count($faction->getAllies()) >= $this->plugin->getConfig()->getNested("factions.max-allies", 5)) {
+            $member->sendMessage("commands.ally.max-allies", ["{MAX}" => $this->plugin->getConfig()->getNested("factions.max-allies", 5)]);
+            return;
+        }
+
         if ($targetFaction->getRelationWish($faction) === Relations::ALLY) {
             $ev = new FactionRelationEvent($faction, $targetFaction, Relations::ALLY);
             $ev->call();

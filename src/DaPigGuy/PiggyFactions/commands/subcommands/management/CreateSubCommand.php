@@ -26,7 +26,7 @@ class CreateSubCommand extends FactionSubCommand
             $member->sendMessage("commands.create.name-taken", ["{NAME}" => $args["name"]]);
             return;
         }
-        if ($this->plugin->getConfig()->getNested("factions.enforce-alphanumeric-names", false) && !ctype_alnum($args["name"])) {
+        if ($this->plugin->getConfig()->getNested("factions.enforce-alphanumeric-names", false) && !ctype_alnum(str_replace(["-", "_"], "", $args["name"]))) {
             $member->sendMessage("commands.create.alphanumeric-only", ["{NAME}" => $args["name"]]);
             return;
         }

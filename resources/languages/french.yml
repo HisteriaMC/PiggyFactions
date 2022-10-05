@@ -25,6 +25,7 @@ commands:
     request: "{GREEN}{FACTION} a envoyé une demande d'allié. Fais /f ally {FACTION} pour accepter."
     allied: "{GREEN}Ta faction est maintenant alliée avec {ALLY}."
     success: "{GREEN}Vous avez envoyé une demande d'alliance à {FACTION}."
+    max-allies: "{RED}Vous avez atteint le nombre maximum d'alliés."
   ban:
     cant-ban-higher: "{RED}Vous ne pouvez pas bannir des membres de rang supérieur au vôtre."
     already-banned: "{RED}{PLAYER} est déjà banni."
