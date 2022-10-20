@@ -9,6 +9,7 @@ use DaPigGuy\PiggyFactions\event\claims\ChunkOverclaimEvent;
 use DaPigGuy\PiggyFactions\event\claims\ClaimChunkEvent;
 use DaPigGuy\PiggyFactions\factions\Faction;
 use DaPigGuy\PiggyFactions\players\FactionsPlayer;
+use minicore\handler\Areas\AreaProtect;
 use pocketmine\player\Player;
 
 abstract class ClaimMultipleSubCommand extends FactionSubCommand
@@ -25,6 +26,14 @@ abstract class ClaimMultipleSubCommand extends FactionSubCommand
         $chunks = $this->getChunks($sender, $args);
         if (empty($chunks)) return;
         foreach ($chunks as $chunk) {
+            $x = $chunk[0] * 16;
+            $z = $chunk[1] * 16;
+            if(AreaProtect::canEdit($sender, $sender->getPosition()) ||
+                (abs($x) <= 300 || abs($z) <= 300)) {
+                $member->sendMessage("commands.claim.too-close-to-spawn");
+                return;
+            }
+
             if (!$member->isInAdminMode()) {
                 if ($faction->getPower() / $this->plugin->getConfig()->getNested("factions.claim.cost", 1) < count($this->plugin->getClaimsManager()->getFactionClaims($faction)) + 1) {
                     break;

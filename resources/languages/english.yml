@@ -44,6 +44,7 @@ commands:
     over-claimed: "{GREEN}This chunk has been overclaimed."
     success: "{GREEN}This chunk has been claimed."
     claimed-multiple: "{GREEN}{AMOUNT} chunks claimed by {COMMAND}."
+    too-close-to-spawn: "{RED}You are too close from the spawn."
     auto:
       toggled: "{GREEN}You are now auto-claiming."
       toggled-off: "{RED}You are no longer auto-claiming."

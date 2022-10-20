@@ -9,6 +9,7 @@ use DaPigGuy\PiggyFactions\event\claims\ChunkOverclaimEvent;
 use DaPigGuy\PiggyFactions\event\claims\ClaimChunkEvent;
 use DaPigGuy\PiggyFactions\factions\Faction;
 use DaPigGuy\PiggyFactions\players\FactionsPlayer;
+use minicore\handler\Areas\AreaProtect;
 use pocketmine\player\Player;
 use pocketmine\world\format\Chunk;
 
@@ -16,7 +17,7 @@ class ClaimSubCommand extends FactionSubCommand
 {
     public function onNormalRun(Player $sender, ?Faction $faction, FactionsPlayer $member, string $aliasUsed, array $args): void
     {
-        if (!in_array($sender->getWorld()->getFolderName(), $this->plugin->getConfig()->getNested("factions.claims.whitelisted-worlds"))) {
+        if (!in_array($sender->getWorld()->getFolderName(), $this->plugin->getConfig()->getNested("factions.claims.whitelisted-worlds", []))) {
             $member->sendMessage("commands.claim.blacklisted-world");
             return;
         }
@@ -54,6 +55,15 @@ class ClaimSubCommand extends FactionSubCommand
         }
         $chunkX = $sender->getPosition()->getFloorX() >> Chunk::COORD_BIT_SIZE;
         $chunkZ = $sender->getPosition()->getFloorZ() >> Chunk::COORD_BIT_SIZE;
+
+        $x = $sender->getPosition()->getX();
+        $z = $sender->getPosition()->getZ();
+
+        if(AreaProtect::canEdit($sender, $sender->getPosition()) ||
+            (abs($x) <= 300 || abs($z) <= 300)) {
+            $member->sendMessage("commands.claim.too-close-to-spawn");
+            return;
+        }
 
         $ev = new ClaimChunkEvent($faction, $member, $chunkX, $chunkZ);
         $ev->call();
