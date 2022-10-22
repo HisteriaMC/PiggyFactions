@@ -37,8 +37,8 @@ factions:
     min: 0
     max: 1000000000
     per:
-      death: -1
-      kill: 1
+      death: 0
+      kill: 0
       hour: 0
   homes:
     within-territory: true
@@ -56,7 +56,7 @@ factions:
       truce: []
       ally: []
     overclaim: true
-    cost: 1000
+    cost: 250
     max: 200
     shield-factor: 0.1
 languages:

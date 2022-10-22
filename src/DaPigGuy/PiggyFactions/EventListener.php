@@ -113,7 +113,7 @@ class EventListener implements Listener
             if($player instanceof CustomPlayer){
                 $player->getFaction()->setPowerBoost($player->getFaction()->getPowerBoost() - $power);
             }
-            $member->sendMessage("factions.death", ["{POWER}" => $power]);
+            $member->sendMessage("death.power", ["{POWER}" => $power]);
         }
 
         $cause = $player->getLastDamageCause();
