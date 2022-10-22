@@ -9,46 +9,55 @@ database:
     schema: "piggyfactions"
   worker-limit: 1
 economy:
-  enabled: false
-  provider: bedrockeconomy
+  enabled: true
+  provider: economyapi
   faction-bank:
     enabled: true
 factions:
-  enforce-alphanumeric-names: false
+  enforce-alphanumeric-names: true
   blacklisted-names:
     - staff
     - owner
     - admin
     - mojang
+    - histeria
+    - dadodasyra
+    - HadesSurMC
+    - WillyDuGang
+    - Hiroshima
+    - Plutonium
   max-name-length: 16
-  max-players: 50
+  max-players: 20
+  max-allies: 2
   pvp:
     factionless: true
     between-factionless: true
   power:
     default: 0
     min: 0
-    max: 10
+    max: 1000000000
     per:
-      death: -2
+      death: -1
       kill: 1
-      hour: 2
+      hour: 0
   homes:
     within-territory: true
-    teleport-on-death: true
+    teleport-on-death: false
   claims:
-    blacklisted-worlds: []
+    whitelisted-worlds: [faction1, faction2, faction3]
     denied-commands:
-      enemy:
+      enemy: #Should we remove this ?
         - home
         - spawn
         - hub
+        - lobby
+        - h
       none: []
       truce: []
       ally: []
     overclaim: true
-    cost: 1
-    max: -1
+    cost: 1000
+    max: 200
     shield-factor: 0.1
 languages:
   default: "english"
@@ -63,8 +72,8 @@ symbols:
       safezone: "{GOLD}"
       warzone: "{DARK_RED}"
   ranks:
-    leader: "^"
-    officer: "*"
+    leader: "*"
+    officer: "^"
     member: "+"
     recruit: "-"
     none: ""

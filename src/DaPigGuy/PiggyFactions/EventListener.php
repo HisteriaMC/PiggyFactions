@@ -9,6 +9,7 @@ use DaPigGuy\PiggyFactions\factions\Faction;
 use DaPigGuy\PiggyFactions\flags\Flag;
 use DaPigGuy\PiggyFactions\utils\ChatTypes;
 use DaPigGuy\PiggyFactions\utils\RoundValue;
+use minicore\CustomPlayer;
 use pocketmine\event\entity\EntityDamageByEntityEvent;
 use pocketmine\event\Listener;
 use pocketmine\event\player\PlayerChatEvent;
@@ -103,25 +104,29 @@ class EventListener implements Listener
         $player = $event->getPlayer();
         $member = $this->plugin->getPlayerManager()->getPlayer($player);
         if ($member !== null) {
-            $ev = new PowerChangeEvent($member, PowerChangeEvent::CAUSE_DEATH, $member->getPower() + $this->plugin->getConfig()->getNested("factions.power.per.death", -2));
-            $ev->call();
-            if ($ev->isCancelled()) return;
-            $member->setPower($ev->getPower());
-            $member->sendMessage("death.power", ["{POWER}" => RoundValue::round($member->getPower())]);
+            $world = $player->getWorld()->getDisplayName();
+            $power = match ($world) {
+                "arene1" => 5,
+                "arene2", "faction1", "faction2", "faction3" => 20,
+                default => 0
+            };
+            if($player instanceof CustomPlayer){
+                $player->getFaction()->setPowerBoost($player->getFaction()->getPowerBoost() - $power);
+            }
+            $member->sendMessage("factions.death", ["{POWER}" => $power]);
         }
 
         $cause = $player->getLastDamageCause();
         if ($cause instanceof EntityDamageByEntityEvent) {
             $damager = $cause->getDamager();
-            if ($damager instanceof Player) {
-                $damagerMember = $this->plugin->getPlayerManager()->getPlayer($damager);
-
-                if ($damagerMember !== null) {
-                    $ev = new PowerChangeEvent($damagerMember, PowerChangeEvent::CAUSE_KILL, $damagerMember->getPower() + $this->plugin->getConfig()->getNested("factions.power.per.kill", 1));
-                    $ev->call();
-                    if ($ev->isCancelled()) return;
-                    $damagerMember->setPower($ev->getPower());
-                }
+            if ($damager instanceof CustomPlayer) {
+                $world = $damager->getWorld()->getDisplayName();
+                $power = match ($world) {
+                    "arene1" => 5,
+                    "arene2", "faction1", "faction2", "faction3" => 20,
+                    default => 0
+                };
+                $damager->getFaction()->setPowerBoost($player->getFaction()->getPowerBoost() + $power);
             }
         }
     }

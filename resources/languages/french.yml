@@ -126,7 +126,7 @@ commands:
     toggled: "{GREEN}La permission {PERMISSION} a été activée pour le rôle {ROLE}."
     toggled-off: "{RED}La permission {PERMISSION} a été désactivée pour le rôle {ROLE}."
   player:
-    message: "\n{GOLD}____________.[{DARK_GREEN}Joueur {RANKSYMBOL}{PLAYER}{GOLD}].____________\n{GOLD}Faction: {YELLOW}{FACTION}\n{GOLD}Pouvoir: {YELLOW}{POWER}/{TOTALPOWER} {TIMETOMAXPOWER}"
+    message: "\n{GOLD}____________.[{DARK_GREEN}Joueur {RANKSYMBOL}{PLAYER}{GOLD}].____________\n{GOLD}Faction: {YELLOW}{FACTION}\n{GOLD}Pouvoir: {YELLOW}{POWER}"
     time-to-max-power: "({TIME} heure avant le maximum)"
   promote:
     cant-promote-higher: "{RED}Vous ne pouvez pas promouvoir au-dessus de votre propre rang."
@@ -152,7 +152,7 @@ commands:
     line:
       online: "{GOLD}#{RANK} {RELATIONCOLOR}{FACTION}{GOLD} -{YELLOW} {ONLINE}"
       members: "{GOLD}#{RANK} {RELATIONCOLOR}{FACTION}{GOLD} -{YELLOW} {MEMBERS}"
-      power: "{GOLD}#{RANK} {RELATIONCOLOR}{FACTION}{GOLD} -{YELLOW} {POWER}/{TOTALPOWER}"
+      power: "{GOLD}#{RANK} {RELATIONCOLOR}{FACTION}{GOLD} -{YELLOW} {POWER}"
       money: "{GOLD}#{RANK} {RELATIONCOLOR}{FACTION}{GOLD} -{YELLOW} ${MONEY}"
   truce:
     self: "{RED}Tu ne peux pas avoir un pacte de non-agression avec ta propre faction."
@@ -182,7 +182,7 @@ commands:
   withdraw:
     success: "{GREEN}${MONEY} ont été retirés de la tirelire de la faction."
 death:
-  power: "{RED}Ton pouvoir est maintenant {POWER}."
+  power: "{RED}Ta faction a perdu {POWER} de power."
 economy:
   not-enough-money: "{RED}Tu n'as pas assez d'argent. Il te manque {DIFFERENCE}."
   negative-money: "{RED}Quantité négative d'argent fournie."
