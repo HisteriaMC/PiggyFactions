@@ -110,9 +110,8 @@ class EventListener implements Listener
                 "arene2", "faction1", "faction2", "faction3" => 20,
                 default => 0
             };
-            if($player instanceof CustomPlayer){
-                $player->getFaction()->setPowerBoost($player->getFaction()->getPowerBoost() - $power);
-            }
+            if($player instanceof CustomPlayer) $player->getFaction()?->subtractPowerBoost($power);
+
             $member->sendMessage("death.power", ["{POWER}" => $power]);
         }
 
@@ -126,7 +125,7 @@ class EventListener implements Listener
                     "arene2", "faction1", "faction2", "faction3" => 20,
                     default => 0
                 };
-                $damager->getFaction()->setPowerBoost($player->getFaction()->getPowerBoost() + $power);
+                $damager->getFaction()?->addPowerBoost($power);
             }
         }
     }

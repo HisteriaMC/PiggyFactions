@@ -117,6 +117,18 @@ class Faction
         return $this->powerboost;
     }
 
+    public function addPowerBoost(float $powerboost): void
+    {
+        $this->powerboost += $powerboost;
+        $this->update();
+    }
+
+    public function subtractPowerBoost(float $powerboost): void
+    {
+        $this->powerboost -= $powerboost;
+        $this->update();
+    }
+
     public function setPowerBoost(float $powerboost): void
     {
         $this->powerboost = $powerboost;
