@@ -28,7 +28,7 @@ abstract class ClaimMultipleSubCommand extends FactionSubCommand
         foreach ($chunks as $chunk) {
             $x = $chunk[0] * 16;
             $z = $chunk[1] * 16;
-            if(AreaProtect::canEdit($sender, $sender->getPosition()) ||
+            if(!AreaProtect::canEdit($sender, $sender->getPosition()) ||
                 (abs($x) <= 300 || abs($z) <= 300)) {
                 $member->sendMessage("commands.claim.too-close-to-spawn");
                 return;
