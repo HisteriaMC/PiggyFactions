@@ -35,6 +35,7 @@ use minicore\libs\libasynql\libasynql;
 
 class PiggyFactions extends PluginBase
 {
+    public const PREFIX = "§9[§9HisteriaFac§9] ";
     const CURRENT_DB_VERSION = 4;
 
     private static PiggyFactions $instance;

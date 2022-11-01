@@ -99,10 +99,10 @@ class EventListener implements Listener
         }
     }
 
-    public function onDeath(PlayerDeathEvent $event): void
+    public static function onDeath(PlayerDeathEvent $event): void
     {
         $player = $event->getPlayer();
-        $member = $this->plugin->getPlayerManager()->getPlayer($player);
+        $member = PiggyFactions::getInstance()->getPlayerManager()->getPlayer($player);
         if ($member !== null) {
             $world = $player->getWorld()->getDisplayName();
             $power = match ($world) {

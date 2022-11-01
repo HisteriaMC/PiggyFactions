@@ -105,7 +105,7 @@ class LanguageManager
                 $message = str_replace("{FACTION}", $faction->getName(), $message);
             }
         }
-        $commandSender->sendMessage($message);
+        $commandSender->sendMessage(PiggyFactions::PREFIX.$message);
     }
 
     public function getColorFor(Player $player, Faction $faction): string
