@@ -126,12 +126,14 @@ class Faction
     public function subtractPowerBoost(float $powerboost): void
     {
         $this->powerboost -= $powerboost;
+        if ($this->powerboost < 0) $this->powerboost = 0;
         $this->update();
     }
 
     public function setPowerBoost(float $powerboost): void
     {
         $this->powerboost = $powerboost;
+        if ($this->powerboost < 0) $this->powerboost = 0;
         $this->update();
     }
 
