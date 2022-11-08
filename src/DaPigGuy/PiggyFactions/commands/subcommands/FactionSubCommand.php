@@ -55,7 +55,7 @@ abstract class FactionSubCommand extends BaseSubCommand
                 return;
             }
 
-            if (!$this->factionPermission) {
+            //if (!$this->factionPermission) {
                 $parent = $this->getParent();
                 $permission = $this->getName();
                 while ($parent instanceof BaseSubCommand) {
@@ -68,7 +68,7 @@ abstract class FactionSubCommand extends BaseSubCommand
                         return;
                     }
                 }
-            }
+            //}
         }
 
         foreach ($this->getArgumentList() as $arguments) {
