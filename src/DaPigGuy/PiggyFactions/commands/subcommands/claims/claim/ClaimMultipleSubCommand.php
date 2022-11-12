@@ -18,8 +18,8 @@ abstract class ClaimMultipleSubCommand extends FactionSubCommand
 
     public function onNormalRun(Player $sender, ?Faction $faction, FactionsPlayer $member, string $aliasUsed, array $args): void
     {
-        if (in_array($sender->getWorld()->getFolderName(), $this->plugin->getConfig()->getNested("factions.claims.blacklisted-worlds"))) {
-            $member->sendMessage("commands.claim.blacklisted-world");
+        if (in_array($sender->getWorld()->getFolderName(), $this->plugin->getConfig()->getNested("factions.claims.whitelisted-worlds"))) {
+            $member->sendMessage("commands.claim.whitelisted-world");
             return;
         }
         $claimed = 0;
