@@ -22,6 +22,8 @@ abstract class ClaimMultipleSubCommand extends FactionSubCommand
             $member->sendMessage("commands.claim.whitelisted-world");
             return;
         }
+        if ($args["radius"] > 100) return; //This is so stupid so I just added this to prevent crashes, fuck messages
+
         $claimed = 0;
         $chunks = $this->getChunks($sender, $args);
         if (empty($chunks)) return;
