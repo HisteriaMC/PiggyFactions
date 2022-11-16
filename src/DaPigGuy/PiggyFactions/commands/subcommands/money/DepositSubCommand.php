@@ -37,10 +37,10 @@ class DepositSubCommand extends FactionSubCommand
                 });
             }
         });
-        $this->plugin->getEconomyProvider()->getMoney($sender, function (float|int $balance) use ($args, $member, $sender, $faction) {
+        /*$this->plugin->getEconomyProvider()->getMoney($sender, function (float|int $balance) use ($args, $member, $sender, $faction) {
 
 
-        });
+        });*/
     }
 
     protected function prepare(): void

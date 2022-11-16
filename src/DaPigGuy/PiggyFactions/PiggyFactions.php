@@ -229,6 +229,7 @@ class PiggyFactions extends PluginBase
 
     public function isFactionBankEnabled(): bool
     {
-        return $this->economyProvider !== null && $this->getConfig()->getNested("economy.faction-bank.enabled", true);
+        return $this->getConfig()->getNested("economy.faction-bank.enabled", true);
+        /*return $this->economyProvider !== null && $this->getConfig()->getNested("economy.faction-bank.enabled", true);*/
     }
 }

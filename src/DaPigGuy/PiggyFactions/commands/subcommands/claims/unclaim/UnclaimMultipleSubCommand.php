@@ -16,8 +16,8 @@ abstract class UnclaimMultipleSubCommand extends FactionSubCommand
 
     public function onNormalRun(Player $sender, ?Faction $faction, FactionsPlayer $member, string $aliasUsed, array $args): void
     {
-        if (in_array($sender->getWorld()->getFolderName(), $this->plugin->getConfig()->getNested("factions.claims.blacklisted-worlds"))) {
-            $member->sendMessage("commands.unclaim.blacklisted-world");
+        if (in_array($sender->getWorld()->getFolderName(), $this->plugin->getConfig()->getNested("factions.claims.whitelisted-worlds"))) {
+            $member->sendMessage("commands.unclaim.whitelisted-world");
             return;
         }
         $unclaimed = 0;
