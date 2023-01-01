@@ -60,7 +60,7 @@ class ClaimSubCommand extends FactionSubCommand
         $z = $sender->getPosition()->getZ();
 
         if(!AreaProtect::canEdit($sender, $sender->getPosition()) ||
-            (abs($x) <= 300 || abs($z) <= 300)) {
+            (abs($x) <= 300 && abs($z) <= 300)) {
             $member->sendMessage("commands.claim.too-close-to-spawn");
             return;
         }
