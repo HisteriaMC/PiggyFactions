@@ -10,6 +10,7 @@ use DaPigGuy\PiggyFactions\event\claims\UnclaimChunkEvent;
 use DaPigGuy\PiggyFactions\permissions\FactionPermission;
 use DaPigGuy\PiggyFactions\PiggyFactions;
 use DaPigGuy\PiggyFactions\utils\Relations;
+use minicore\handler\Areas\AreaProtect;
 use pocketmine\block\tile\Container;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\BlockPlaceEvent;
@@ -74,6 +75,11 @@ class ClaimsListener implements Listener
             if ($oldClaim !== $newClaim) {
                 if (($faction = $member->getFaction()) !== null) {
                     if ($member->isAutoClaiming()) {
+                        if(!AreaProtect::canEdit($player, $player->getPosition()) ||
+                            (abs($event->getTo()->getFloorX()) <= 300 || abs($event->getTo()->getFloorZ()) <= 300)) {
+                            $member->sendMessage("commands.claim.too-close-to-spawn");
+                            return;
+                        }
                         if (!$member->isInAdminMode()) {
                             if (($total = count($this->manager->getFactionClaims($faction))) >= ($max = $this->plugin->getConfig()->getNested("factions.claims.max", -1)) && $max !== -1) {
                                 $member->setAutoClaiming(false);
