@@ -28,7 +28,7 @@ class WithdrawSubCommand extends FactionSubCommand
         /** @var CustomPlayer $sender */
         $sender->addMoney($args["money"], function(int $status) use ($member, $args, $faction): void {
             if ($status !== EconomyAPI::SUCCESS) {
-                $member->sendMessage("generic-error");
+                $member->sendMessage("generic-error", ["{CONTEXT}" => "Unable to give money to your account."]);
                 return;
             }
             $faction->removeMoney($args["money"]);

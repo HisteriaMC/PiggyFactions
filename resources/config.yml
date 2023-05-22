@@ -8,11 +8,13 @@ database:
     password: ""
     schema: "piggyfactions"
   worker-limit: 1
+
 economy:
   enabled: true
   provider: economyapi
   faction-bank:
     enabled: true
+
 factions:
   enforce-alphanumeric-names: true
   blacklisted-names:
@@ -55,12 +57,22 @@ factions:
       none: []
       truce: []
       ally: []
-    overclaim: true
     cost: 250
     max: 200
     shield-factor: 0.1
+    overclaim: true
+    autoclaim: true
+    unclaimall: true
+    circle:
+      enabled: true
+      max-radius: 15
+    square:
+      enabled: true
+      max-radius: 15
+
 languages:
   default: "english"
+
 symbols:
   colors:
     relations:
@@ -79,4 +91,8 @@ symbols:
     none: ""
   factionless: ""
   powerless: "0"
+
+commands:
+  disabled: []
+
 forms: true

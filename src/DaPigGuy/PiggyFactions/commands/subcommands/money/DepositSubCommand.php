@@ -29,8 +29,7 @@ class DepositSubCommand extends FactionSubCommand
                 }
                 $sender->takeMoney($args["money"], function (int $state) use ($member, $args, $faction) {
                     if ($state !== EconomyAPI::SUCCESS) {
-                        $member->sendMessage("generic-error");
-                        return;
+                        $member->sendMessage("generic-error", ["{CONTEXT}" => "Unable to take money from your account."]);                        return;
                     }
                     $faction->addMoney($args["money"]);
                     $member->sendMessage("commands.deposit.success", ["{MONEY}" => $args["money"]]);
