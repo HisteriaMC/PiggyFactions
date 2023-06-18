@@ -131,7 +131,7 @@ class FactionCommand extends BaseCommand
             new UnbanSubCommand($this->plugin, "unban", "Unban a member from your faction"),
             new UnclaimSubCommand($this->plugin, "unclaim", "Unclaim a chunk"),
             new UnsetHomeSubCommand($this->plugin, "unsethome", "Unset faction home", ["delhome"]),
-            new VersionSubCommand($this->plugin, "version", "Display version & credits for PiggyFactions", ["v", "ver"])
+            new VersionSubCommand($this->plugin, "version", "Display version & credits for PiggyFactions", ["v", "ver"]),
         ];
 
         $bank_commands = [
