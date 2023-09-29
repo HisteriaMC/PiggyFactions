@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace DaPigGuy\PiggyFactions\commands;
 
-use minicore\libs\Commando\BaseCommand;
-use minicore\libs\Commando\BaseSubCommand;
+use CortexPE\Commando\BaseCommand;
+use CortexPE\Commando\BaseSubCommand;
 use DaPigGuy\PiggyFactions\commands\subcommands\admin\AddPowerSubCommand;
 use DaPigGuy\PiggyFactions\commands\subcommands\admin\AdminSubCommand;
 use DaPigGuy\PiggyFactions\commands\subcommands\admin\powerboost\PowerBoostSubCommand;
@@ -66,7 +66,7 @@ class FactionCommand extends BaseCommand
     {
         if ($this->plugin->areFormsEnabled() && $sender instanceof Player) {
             $subcommands = array_filter($this->getSubCommands(), function (BaseSubCommand $subCommand, string $alias) use ($sender): bool {
-                return $subCommand->getName() === $alias && $sender->hasPermission($subCommand->getPermission());
+                return $subCommand->getName() === $alias && count(array_filter($subCommand->getPermissions(), $sender->hasPermission(...))) > 0;
             }, ARRAY_FILTER_USE_BOTH);
             $form = new SimpleForm(function (Player $player, ?int $data) use ($subcommands): void {
                 if ($data !== null) {

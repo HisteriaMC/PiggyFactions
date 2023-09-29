@@ -26,6 +26,7 @@ class HomeSubCommand extends FactionSubCommand
         $ev = new FactionHomeTeleportEvent($faction, $sender);
         $ev->call();
         if ($ev->isCancelled()) return;
+        $member->sendMessage("commands.home.teleported");
         $sender->teleport($home);
     }
 }

@@ -28,13 +28,14 @@ class HelpSubCommand extends FactionSubCommand
     public function onBasicRun(CommandSender $sender, array $args): void
     {
         $subcommands = array_filter($this->parentCommand->getSubCommands(), function (BaseSubCommand $subCommand, string $alias) use ($sender): bool {
-            return $subCommand->getName() === $alias && $sender->hasPermission($subCommand->getPermission());
+            return $subCommand->getName() === $alias && count(array_filter($subCommand->getPermissions(), $sender->hasPermission(...))) > 0;
         }, ARRAY_FILTER_USE_BOTH);
 
         $commandsPerPage = $sender instanceof Player ? self::COMMANDS_PER_PAGE : count($subcommands);
         $maxPages = (int)ceil(count($subcommands) / $commandsPerPage);
-        $page = $args["page"] ?? 1;
+        $page = (int)($args["page"] ?? 1);
         $page = min($page, $maxPages);
+        if ($page < 1) $page = 1;
         $pageCommands = array_slice($subcommands, $commandsPerPage * ($page - 1), $commandsPerPage);
 
         $language = $sender instanceof Player ? $this->plugin->getLanguageManager()->getPlayerLanguage($sender) : $this->plugin->getLanguageManager()->getDefaultLanguage();

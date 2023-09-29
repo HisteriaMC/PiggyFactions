@@ -26,6 +26,7 @@ use DaPigGuy\PiggyFactions\tasks\ShowChunksTask;
 use DaPigGuy\PiggyFactions\tasks\UpdatePowerTask;
 use DaPigGuy\PiggyFactions\utils\PoggitBuildInfo;
 use minicore\libs\FormAPI\Form;
+use Exception;
 use pocketmine\entity\Entity;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
@@ -64,7 +65,7 @@ class PiggyFactions extends PluginBase
         foreach (
             [
                 "Commando" => BaseCommand::class,
-                "libformapi" => Form::class,
+                "FormsUI" => Form::class,
                 "libasynql" => libasynql::class,
                 //"libPiggyUpdateChecker" => libPiggyUpdateChecker::class
             ] as $virion => $class
