@@ -53,7 +53,7 @@ use DaPigGuy\PiggyFactions\commands\subcommands\TopSubCommand;
 use DaPigGuy\PiggyFactions\commands\subcommands\VersionSubCommand;
 use DaPigGuy\PiggyFactions\PiggyFactions;
 use DaPigGuy\PiggyFactions\utils\ChatTypes;
-use minicore\libs\FormAPI\SimpleForm;
+use Vecnavium\FormsUI\SimpleForm;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 

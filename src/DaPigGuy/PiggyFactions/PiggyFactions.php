@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace DaPigGuy\PiggyFactions;
 
-use minicore\libs\Commando\BaseCommand;
-use minicore\libs\Commando\PacketHooker;
+use CortexPE\Commando\BaseCommand;
+use CortexPE\Commando\PacketHooker;
 use DaPigGuy\libPiggyEconomy\libPiggyEconomy;
 use DaPigGuy\libPiggyEconomy\providers\EconomyProvider;
 use DaPigGuy\libPiggyUpdateChecker\libPiggyUpdateChecker;
@@ -25,14 +25,14 @@ use DaPigGuy\PiggyFactions\players\PlayerManager;
 use DaPigGuy\PiggyFactions\tasks\ShowChunksTask;
 use DaPigGuy\PiggyFactions\tasks\UpdatePowerTask;
 use DaPigGuy\PiggyFactions\utils\PoggitBuildInfo;
-use minicore\libs\FormAPI\Form;
+use Vecnavium\FormsUI\Form;
 use Exception;
 use pocketmine\entity\Entity;
 use pocketmine\player\Player;
 use pocketmine\plugin\PluginBase;
 use pocketmine\utils\Config;
-use minicore\libs\libasynql\DataConnector;
-use minicore\libs\libasynql\libasynql;
+use poggit\libasynql\DataConnector;
+use poggit\libasynql\libasynql;
 
 class PiggyFactions extends PluginBase
 {

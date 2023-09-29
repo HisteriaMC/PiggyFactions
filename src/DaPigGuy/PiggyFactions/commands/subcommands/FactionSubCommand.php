@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace DaPigGuy\PiggyFactions\commands\subcommands;
 
-use minicore\libs\Commando\args\BaseArgument;
-use minicore\libs\Commando\args\BooleanArgument;
-use minicore\libs\Commando\args\FloatArgument;
-use minicore\libs\Commando\args\IntegerArgument;
-use minicore\libs\Commando\args\StringEnumArgument;
-use minicore\libs\Commando\BaseSubCommand;
+use CortexPE\Commando\args\BaseArgument;
+use CortexPE\Commando\args\BooleanArgument;
+use CortexPE\Commando\args\FloatArgument;
+use CortexPE\Commando\args\IntegerArgument;
+use CortexPE\Commando\args\StringEnumArgument;
+use CortexPE\Commando\BaseSubCommand;
 use DaPigGuy\PiggyFactions\factions\Faction;
 use DaPigGuy\PiggyFactions\permissions\PermissionFactory;
 use DaPigGuy\PiggyFactions\PiggyFactions;
 use DaPigGuy\PiggyFactions\players\FactionsPlayer;
 use DaPigGuy\PiggyFactions\utils\PiggyArgument;
-use minicore\libs\FormAPI\CustomForm;
+use Vecnavium\FormsUI\CustomForm;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
 use pocketmine\utils\TextFormat;

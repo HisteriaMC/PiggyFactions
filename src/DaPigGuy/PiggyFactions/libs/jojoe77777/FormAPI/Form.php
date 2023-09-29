@@ -2,7 +2,7 @@
 
 declare(strict_types = 1);
 
-namespace minicore\libs\FormAPI;
+namespace Vecnavium\FormsUI;
 
 use pocketmine\form\Form as IForm;
 use pocketmine\player\Player;
