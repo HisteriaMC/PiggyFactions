@@ -15,6 +15,7 @@ use DaPigGuy\PiggyFactions\permissions\PermissionFactory;
 use DaPigGuy\PiggyFactions\PiggyFactions;
 use DaPigGuy\PiggyFactions\players\FactionsPlayer;
 use DaPigGuy\PiggyFactions\utils\PiggyArgument;
+use pocketmine\plugin\Plugin;
 use Vecnavium\FormsUI\CustomForm;
 use pocketmine\command\CommandSender;
 use pocketmine\player\Player;
@@ -23,7 +24,7 @@ use pocketmine\utils\TextFormat;
 abstract class FactionSubCommand extends BaseSubCommand
 {
     /** @var PiggyFactions */
-    protected $plugin;
+    protected Plugin $plugin;
 
     protected bool $requiresPlayer = true;
     protected bool $requiresFaction = true;
