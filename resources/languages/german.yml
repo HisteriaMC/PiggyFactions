@@ -35,7 +35,7 @@ commands:
     toggled: "{GREEN}Du bist nun im {CHAT} Chat."
     toggled-off: "{RED}Du bist nicht mehr im {CHAT} Chat."
   claim:
-    blacklisted-world: "{RED}Landbeanspruchung ist in dieser Welt nicht erlaubt."
+    whitelist-world: "{RED}Landbeanspruchung ist in dieser Welt nicht erlaubt."
     max-claimed: "{RED}Du kannst kein weiteres Land beanspruchen."
     already-claimed: "{RED}Dieser Chunk ist bereits beansprucht."
     no-power: "{RED}Deine Faktion hat unzureichende Stärke."
@@ -166,7 +166,7 @@ commands:
     not-banned: "{RED}{PLAYER} ist nicht verwiesen."
     announcement: "{YELLOW}{PLAYER} ist nicht mehr von der Faktion verwiesen."
   unclaim:
-    blacklisted-world: "{RED}Die Freigabe von Land ist in dieser Welt nicht erlaubt."
+    whitelist-world: "{RED}Die Freigabe von Land ist in dieser Welt nicht erlaubt."
     not-claimed: "{RED}Dieser Chunk ist unbeansprucht."
     other-faction: "{RED}Dieser Chunk ist von einer anderen Faktion beansprucht."
     success: "{GREEN}Der Anspruch auf diesen Chunk wurde fallen gelassen."

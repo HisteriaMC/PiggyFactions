@@ -34,7 +34,7 @@ commands:
     toggled: "{GREEN}你已进入{CHAT} 对话."
     toggled-off: "{RED}你已退出 {CHAT} 对话."
   claim:
-    blacklisted-world: "{RED}此世界并不能进行领地霸占或拥有."
+    whitelist-world: "{RED}此世界并不能进行领地霸占或拥有."
     max-claimed: "{RED}你不能再霸占或拥有任何领地."
     already-claimed: "{RED}此区块已被霸占及拥有."
     no-power: "{RED}你公会并没有足够的力量."
@@ -164,7 +164,7 @@ commands:
     not-banned: "{RED}{PLAYER} 并未受到禁制."
     announcement: "{YELLOW}{PLAYER} 玩家已从公会中解除禁制."
   unclaim:
-    blacklisted-world: "{RED}此世界并不能进行撤销占领地或撤销拥有."
+    whitelist-world: "{RED}此世界并不能进行撤销占领地或撤销拥有."
     not-claimed: "{RED}此区块并未被霸占."
     other-faction: "{RED}此区块已被其他公会霸占."
     success: "{GREEN}已取消霸占此区块."

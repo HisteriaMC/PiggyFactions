@@ -35,7 +35,7 @@ commands:
     toggled: "{GREEN}Kamu sekarang didalam obrolan {CHAT}."
     toggled-off: "{RED}Kamu tidak didalam obrolan {CHAT}."
   claim:
-    blacklisted-world: "{RED}Mengklaim tidak diizinkan di dunia ini."
+    whitelist-world: "{RED}Mengklaim tidak diizinkan di dunia ini."
     max-claimed: "{RED}Kamu tidak dapat mengklaim tanah lagi."
     already-claimed: "{RED}Chunk ini sudah diklaim"
     no-power: "{RED}Faction kamu tidak memiliki kekuatan yang dicukupi"
@@ -166,7 +166,7 @@ commands:
     not-banned: "{RED}{PLAYER} tidak dilarang."
     announcement: "{YELLOW}{PLAYER} tidak dilarang dari Faction."
   unclaim:
-    blacklisted-world: "{RED}Tidak mengklaim tidak diizinkan di dunia ini."
+    whitelist-world: "{RED}Tidak mengklaim tidak diizinkan di dunia ini."
     not-claimed: "{RED}Chunk tidak diklaim."
     other-faction: "{RED}Chunk ini telah diklaim oleh Faction lain."
     success: "{GREEN}Chunk ini sudah tidak diklaim"

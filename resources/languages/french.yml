@@ -36,7 +36,7 @@ commands:
     toggled: "{GREEN}Vous êtes maintenant dans le tchat: {CHAT}."
     toggled-off: "{RED}Vous n'êtes plus dans le tchat: {CHAT}."
   claim:
-    blacklisted-world: "{RED}Vous ne pouvez pas claim dans ce monde."
+    whitelist-world: "{RED}Vous ne pouvez pas claim dans ce monde."
     max-claimed: "{RED}Vous ne pouvez pas claim plus de territoires."
     already-claimed: "{RED}Ce territoire est déjà occupé."
     no-power: "{RED}Ta faction n'a pas assez de pouvoir."
@@ -168,7 +168,7 @@ commands:
     not-banned: "{RED}{PLAYER} n'est pas banni."
     announcement: "{YELLOW}{PLAYER} a été débanni de la faction."
   unclaim:
-    blacklisted-world: "{RED}Le unclaim n'est pas autorisé dans ce monde."
+    whitelist-world: "{RED}Le unclaim n'est pas autorisé dans ce monde."
     not-claimed: "{RED}Ce chunk n'est pas claim"
     other-faction: "{RED}Ce chunk est claim par une autre faction."
     success: "{GREEN}Ce chunk a été unclaim."

@@ -34,7 +34,7 @@ commands:
     toggled: "{GREEN}Ahora estas actualmente {CHAT} chat."
     toggled-off: "{RED}Ya no estás en el chat de {CHAT}."
   claim:
-    blacklisted-world: "{RED}Reclamar no está permitido en este mundo."
+    whitelist-world: "{RED}Reclamar no está permitido en este mundo."
     max-claimed: "{RED}No puedes reclamar más tierras."
     already-claimed: "{RED}Esta trozo ya está reclamado."
     no-power: "{RED}Tu facción tiene una cantidad de poder insuficiente."
@@ -164,7 +164,7 @@ commands:
     not-banned: "{RED}{PLAYER} no esta bloqueado."
     announcement: "{YELLOW}{PLAYER} Fue desbloqueado de la facción."
   unclaim:
-    blacklisted-world: "{RED}Eliminar el reclamo no está permitido en este mundo."
+    whitelist-world: "{RED}Eliminar el reclamo no está permitido en este mundo."
     not-claimed: "{RED} Este trozo no esta reclamado."
     other-faction: "{RED}Este trozo esta reclamado por otra facción."
     success: "{GREEN}Este trozo ya no esta reclamado."

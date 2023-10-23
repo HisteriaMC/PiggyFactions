@@ -35,7 +35,7 @@ commands:
     toggled: "{GREEN}Ti si u {CHAT} četu."
     toggled-off: "{RED}Nisi više u {CHAT} ćetu."
   claim:
-    blacklisted-world: "{RED}Uzimanje zemlje je zabranjeno u ovom svetu."
+    whitelist-world: "{RED}Uzimanje zemlje je zabranjeno u ovom svetu."
     max-claimed: "{RED}Ne mozeš uzeti vise zemlje."
     already-claimed: "{RED}Ovaj komad je već uzet."
     no-power: "{RED}Tvoja frakcija nema dovoljno moći."
@@ -166,7 +166,7 @@ commands:
     not-banned: "{RED}{PLAYER} nije banovan."
     announcement: "{YELLOW}{PLAYER} je unbanovan iz frakcije."
   unclaim:
-    blacklisted-world: "{RED}Unclaimovanje nije dozvoljeno u ovom svetu."
+    whitelist-world: "{RED}Unclaimovanje nije dozvoljeno u ovom svetu."
     not-claimed: "{RED}Ovaj komad nije uzet."
     other-faction: "{RED}Ovaj komad već ima druga frakcija."
     success: "{GREEN}Ovaj komad nije više uzet."
