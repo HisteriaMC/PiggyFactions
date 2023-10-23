@@ -22,7 +22,7 @@ class LogsSubCommand extends FactionSubCommand
     {
         $currentPage = (int)(($args["page"] ?? 1) - 1);
         if (isset($args["action"]) && is_numeric($args["action"])) $currentPage = (int)$args["action"] - 1;
-        if ($currentPage < 0) {
+        if ($currentPage < 0 || $currentPage > 99999) {
             $member->sendMessage("logs.page-too-low");
             return;
         }
