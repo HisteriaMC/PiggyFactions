@@ -11,6 +11,7 @@ use DaPigGuy\PiggyFactions\permissions\FactionPermission;
 use DaPigGuy\PiggyFactions\PiggyFactions;
 use DaPigGuy\PiggyFactions\utils\Relations;
 use minicore\handler\Areas\AreaProtect;
+use minicore\items\register\CustomItemTypeIds;
 use pocketmine\block\tile\Container;
 use pocketmine\event\block\BlockBreakEvent;
 use pocketmine\event\block\BlockPlaceEvent;
@@ -68,6 +69,7 @@ class ClaimsListener implements Listener
     public function onInteract(PlayerInteractEvent $event): void
     {
         $tile = $event->getBlock()->getPosition()->getWorld()->getTile($event->getBlock()->getPosition());
+        if ($event->getPlayer()->getInventory()->getItemInHand()->getTypeId() === CustomItemTypeIds::OBSIDIAN_BREAKER) return;
         if (!$this->canAffectArea($event->getPlayer(), $event->getBlock()->getPosition(), $tile instanceof Container ? FactionPermission::CONTAINERS : FactionPermission::INTERACT)) $event->cancel();
     }
 
