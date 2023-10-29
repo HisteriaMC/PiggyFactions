@@ -63,7 +63,8 @@ class EventListener implements Listener
         $entity = $event->getEntity();
         $damager = $event->getDamager();
         if ($entity instanceof Player && $damager instanceof Player) {
-            if ($this->plugin->getPlayerManager()->areAlliedOrTruced($entity, $damager)) {
+            if ($this->plugin->getPlayerManager()->areAlliedOrTruced($entity, $damager)
+                && (!$entity->states["induel"] && !$damager->states["induel"])) {
                 $event->cancel();
                 return;
             }
